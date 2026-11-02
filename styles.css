@@ -1,0 +1,191 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #F2E5D0;
+    font-family: Georgia, serif;
+    color: #75452F;
+}
+
+
+
+.encabezado {
+    width: 100%;
+    height: 125px;
+    background-color: #FFF9F0;
+    border-bottom: 2px solid #CDA982;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+    gap: 30px;
+}
+
+.titulo {
+    min-width: 220px;
+}
+
+.titulo h1 {
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.titulo p {
+    font-size: 13px;
+}
+
+
+
+.panel-jugadores {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.panel-jugadores h2 {
+    font-size: 22px;
+    white-space: nowrap;
+}
+
+#jugadores {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+    flex: 1;
+}
+
+.jugador {
+    min-width: 130px;
+    padding: 10px;
+    background-color: #F5E8D5;
+    border: 1px solid #D1AD87;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ficha {
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.datos-jugador {
+    font-size: 13px;
+}
+
+
+
+.zona-juego {
+    width: 100%;
+    height: calc(100vh - 125px);
+    position: relative;
+    padding: 15px;
+}
+
+
+
+.tablero {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 5px;
+    padding: 8px;
+    background-color: #D9C5A8;
+    border: 3px solid #79563E;
+    border-radius: 12px;
+    position: relative;
+}
+
+
+
+.casilla {
+    background-color: #FFF9F0;
+    border: 1px solid #B99773;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4px;
+    font-size: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.casilla.propiedad {
+    border-top: 7px solid #B76E45;
+}
+
+
+.centro-tablero {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    background-color: #F2E5D0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.centro-tablero h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.centro-tablero p {
+    font-size: 15px;
+    margin-bottom: 18px;
+}
+
+.centro-tablero span {
+    font-size: 12px;
+}
+
+
+
+.controles {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    z-index: 10;
+}
+
+#btn-dados {
+    padding: 15px 35px;
+    min-width: 170px;
+    border: none;
+    border-radius: 8px;
+    background-color: #A94438;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#btn-dados:disabled {
+    background-color: #BCA394;
+    cursor: not-allowed;
+}
+
