@@ -1,0 +1,2317 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+:root {
+    --rojo: #741b25;
+    --rojo-oscuro: #390d14;
+    --rojo-claro: #a83b32;
+    --dorado: #d5a64d;
+    --dorado-claro: #f0d58e;
+    --crema: #f5e8c9;
+    --papel: #ead8b3;
+    --madera: #542b1b;
+    --madera-clara: #895333;
+    --azul-talavera: #315d70;
+    --texto: #48251c;
+    --naranja-flor: #dc762c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--crema);
+    background:
+        radial-gradient(ellipse at 0% 0%, rgba(255,157,65,.30), transparent 38%),
+        radial-gradient(ellipse at 100% 0%, rgba(255,190,90,.25), transparent 38%),
+        radial-gradient(ellipse at 0% 100%, rgba(255,115,48,.28), transparent 40%),
+        radial-gradient(ellipse at 100% 100%, rgba(255,190,90,.28), transparent 40%),
+        linear-gradient(135deg, #260910, #64151e 55%, #280910);
+    background-attachment: fixed;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.oculta {
+    display: none !important;
+}
+
+/* ==============================
+   DECORACIÓN GENERAL
+============================== */
+
+.pantalla-inicio::after,
+.pantalla-juego::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+    opacity: .15;
+    background-image:
+        repeating-linear-gradient(
+            45deg,
+            transparent 0,
+            transparent 5px,
+            rgba(255,220,160,.08) 6px,
+            transparent 7px
+        );
+}
+
+/* ==============================
+   PORTADA
+============================== */
+
+.pantalla-inicio {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 75px 20px 35px;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 50% 50%, rgba(255,130,54,.35), transparent 35%),
+        radial-gradient(circle at 15% 25%, rgba(211,105,47,.45), transparent 25%),
+        radial-gradient(circle at 85% 75%, rgba(194,119,44,.35), transparent 28%),
+        radial-gradient(ellipse at center, #76202a, #3b0c14 75%);
+}
+
+.pantalla-inicio::before {
+    content: "✿     ❀       ✿       ❀      ✿";
+    position: absolute;
+    bottom: 3%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: rgba(231,177,86,.12);
+    font-size: clamp(35px, 7vw, 85px);
+    letter-spacing: 20px;
+    pointer-events: none;
+}
+
+.papel-picado {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    overflow: hidden;
+    pointer-events: none;
+    filter: drop-shadow(0 5px 4px rgba(0,0,0,.35));
+}
+
+.papel-picado span {
+    width: 75px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f7d994;
+    background:
+        radial-gradient(circle, transparent 23%, rgba(255,255,255,.1) 24%, transparent 27%),
+        #a52b32;
+    border: 2px solid #e1b85e;
+    border-bottom: 0;
+    font-size: 27px;
+    clip-path: polygon(0 0, 100% 0, 100% 82%, 50% 100%, 0 82%);
+}
+
+.papel-picado span:nth-child(even) {
+    background-color: #315d70;
+    color: #fff0cf;
+    transform: translateY(8px);
+}
+
+.papel-picado span:nth-child(3n) {
+    background-color: #a95b27;
+}
+
+/* Portada exterior */
+
+.portada {
+    width: min(590px, 100%);
+    padding: 13px;
+    position: relative;
+    background:
+        linear-gradient(135deg, #f0d58e, #80521f 35%, #d9ac50 70%, #75461d);
+    box-shadow:
+        0 35px 80px rgba(0,0,0,.7),
+        0 0 0 2px #f4d58c,
+        0 0 25px rgba(255,190,90,.65),
+        0 0 65px rgba(255,132,54,.55),
+        0 0 120px rgba(255,105,35,.38),
+        0 0 180px rgba(255,75,25,.20);
+    border-radius: 4px;
+    transform: rotate(-1deg);
+    animation: aparecer 1s ease, brilloPortada 5s ease-in-out infinite;
+}
+
+.portada::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border: 1px solid rgba(242,209,135,.4);
+    pointer-events: none;
+    box-shadow:
+        0 0 20px rgba(255,193,87,.4),
+        0 0 50px rgba(255,120,45,.25);
+}
+
+.marco-portada {
+    position: relative;
+    min-height: 720px;
+    padding: 45px 35px;
+    text-align: center;
+    overflow: hidden;
+    border: 3px double var(--dorado-claro);
+    background:
+        radial-gradient(ellipse at 50% 35%, rgba(255,112,53,.22), transparent 55%),
+        radial-gradient(circle at 50% 40%, rgba(190,70,48,.55), transparent 45%),
+        repeating-linear-gradient(45deg, transparent 0, transparent 12px, rgba(255,255,255,.018) 13px, transparent 14px),
+        linear-gradient(145deg, #8b1e2a, #510c19 65%, #350912);
+    box-shadow:
+        inset 0 0 50px rgba(0,0,0,.55),
+        inset 0 0 90px rgba(255,157,65,.16),
+        inset 0 0 150px rgba(255,95,35,.10);
+}
+
+.marco-portada::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(232,194,112,.65);
+    pointer-events: none;
+}
+
+.marco-portada::after {
+    content: "❀";
+    position: absolute;
+    bottom: 65px;
+    right: 20px;
+    color: rgba(221,154,60,.14);
+    font-size: 100px;
+    pointer-events: none;
+}
+
+.esquina {
+    position: absolute;
+    z-index: 1;
+    color: var(--dorado-claro);
+    font-size: 34px;
+    text-shadow: 0 2px 8px #26070c;
+}
+
+.esquina-superior-izquierda { top: 17px; left: 17px; }
+.esquina-superior-derecha { top: 17px; right: 17px; }
+.esquina-inferior-izquierda { bottom: 17px; left: 17px; }
+.esquina-inferior-derecha { bottom: 17px; right: 17px; }
+
+.ornamento-superior,
+.ornamento-inferior {
+    color: var(--dorado);
+    font-size: 30px;
+    letter-spacing: 10px;
+    text-shadow: 0 2px 5px #26070c;
+}
+
+.subtitulo,
+.autora-portada {
+    color: var(--dorado-claro);
+    letter-spacing: 2.5px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.subtitulo {
+    margin-top: 23px;
+}
+
+.ilustracion-portada {
+    height: 190px;
+    margin: 25px 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.medallon {
+    width: 155px;
+    height: 155px;
+    border: 5px double var(--dorado);
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 35% 30%, #a94039, #6b1420 65%, #350a12);
+    box-shadow:
+        0 0 0 8px rgba(214,170,80,.13),
+        0 0 0 13px rgba(214,170,80,.07),
+        0 0 30px rgba(255,170,70,.45),
+        0 0 65px rgba(255,105,40,.25),
+        0 12px 30px rgba(0,0,0,.5),
+        inset 0 0 20px rgba(0,0,0,.45);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--dorado-claro);
+    position: relative;
+    z-index: 1;
+}
+
+.medallon::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px dashed rgba(240,213,142,.6);
+    border-radius: 50%;
+}
+
+.medallon-centro {
+    font-size: 65px;
+    filter: drop-shadow(0 5px 4px rgba(0,0,0,.4));
+}
+
+.medallon-superior,
+.medallon-inferior {
+    font-size: 17px;
+}
+
+.flor {
+    position: absolute;
+    color: var(--naranja-flor);
+    font-size: 80px;
+    text-shadow: 0 5px 10px #310911;
+    filter: drop-shadow(0 0 12px rgba(255,157,57,.65));
+}
+
+.flor-izquierda {
+    left: 12px;
+    transform: rotate(-25deg);
+}
+
+.flor-derecha {
+    right: 12px;
+    transform: rotate(25deg);
+}
+
+.titulo-portada {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 8vw, 64px);
+    line-height: 1.05;
+    color: #f8e6b9;
+    text-shadow:
+        0 4px 5px #2b080d,
+        0 0 20px rgba(245,211,143,.25),
+        0 0 40px rgba(255,170,75,.15);
+}
+
+.titulo-portada span {
+    display: block;
+    color: var(--dorado-claro);
+    font-style: italic;
+    font-size: .78em;
+}
+
+.separador-portada {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: var(--dorado);
+    margin: 22px 0;
+    font-size: 22px;
+}
+
+.separador-linea {
+    width: 110px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--dorado), transparent);
+    box-shadow: 0 0 12px rgba(255,190,90,.6);
+}
+
+.texto-portada {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--crema);
+    line-height: 1.6;
+}
+
+.autora-portada {
+    margin-top: 25px;
+}
+
+.boton-abrir {
+    margin-top: 35px;
+    padding: 16px 32px;
+    border: 2px solid var(--dorado-claro);
+    border-radius: 3px;
+    color: #4b1017;
+    background: linear-gradient(135deg, #fff0bd, #d4a14b 65%, #a56c2b);
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow:
+        0 6px 0 #71431d,
+        0 8px 20px rgba(0,0,0,.35),
+        0 0 18px rgba(255,195,100,.45),
+        0 0 35px rgba(255,145,50,.25);
+    transition: .25s;
+}
+
+.boton-abrir:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 10px 0 #71431d,
+        0 15px 25px #26070e,
+        0 0 35px rgba(255,195,100,.75);
+    filter: brightness(1.12);
+}
+
+.flecha-abrir {
+    margin-left: 12px;
+}
+
+/* BOTÓN DE REGLAS DENTRO DE LA PORTADA */
+
+.btn-reglas {
+    display: block;
+    width: fit-content;
+    margin: 18px auto 0;
+    padding: 11px 24px;
+    position: relative;
+    z-index: 2;
+    color: var(--dorado-claro);
+    background: rgba(45, 7, 13, .45);
+    border: 1px solid rgba(213, 166, 77, .75);
+    border-radius: 2px;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    box-shadow: 0 3px 10px rgba(0,0,0,.25);
+    transition: .25s;
+}
+
+.btn-reglas:hover {
+    color: #fff3d2;
+    background: rgba(213, 166, 77, .2);
+    border-color: var(--dorado-claro);
+    box-shadow: 0 0 15px rgba(255,195,100,.35);
+    transform: translateY(-2px);
+}
+
+.ornamento-inferior {
+    margin-top: 35px;
+}
+
+/* ==============================
+   PÁGINAS DE CONFIGURACIÓN
+============================== */
+
+.pantalla-cantidad,
+.pantalla-configuracion {
+    min-height: 100vh;
+    padding: 35px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 50% 50%, rgba(255,126,48,.28), transparent 45%),
+        radial-gradient(circle at 20% 20%, rgba(194,91,45,.45), transparent 30%),
+        radial-gradient(circle at 85% 80%, rgba(211,151,59,.28), transparent 25%),
+        linear-gradient(135deg, #310911, #721522, #350911);
+}
+
+.pantalla-cantidad::before,
+.pantalla-configuracion::before {
+    content: "✿     ❀     ✿     ❀     ✿";
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: rgba(232,185,99,.13);
+    font-size: 55px;
+    letter-spacing: 25px;
+    pointer-events: none;
+}
+
+.pagina-libro,
+.configuracion-contenido {
+    width: min(680px, 100%);
+    padding: 48px;
+    color: var(--texto);
+    background:
+        radial-gradient(circle at 0 0, rgba(255,255,255,.4), transparent 35%),
+        repeating-linear-gradient(0deg, transparent 0, transparent 28px, rgba(117,82,43,.035) 29px),
+        linear-gradient(135deg, #f8edcf, #e3c99a);
+    border: 9px double var(--dorado);
+    outline: 2px solid rgba(255,225,157,.45);
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.6),
+        0 0 25px rgba(255,190,90,.45),
+        0 0 65px rgba(255,130,45,.25),
+        inset 0 0 35px rgba(116,75,32,.12);
+    position: relative;
+}
+
+.pagina-libro::before,
+.configuracion-contenido::before {
+    content: "✿";
+    position: absolute;
+    top: 45px;
+    left: 22px;
+    color: rgba(116,27,37,.13);
+    font-size: 55px;
+    pointer-events: none;
+}
+
+.pagina-libro::after,
+.configuracion-contenido::after {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(157,116,51,.3);
+    pointer-events: none;
+}
+
+.pagina-encabezado {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding-bottom: 13px;
+    border-bottom: 2px solid #a9874d;
+    color: #81542a;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.numero-pagina {
+    position: absolute;
+    top: 75px;
+    right: 45px;
+    color: #a17c44;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+}
+
+.indice-contenido {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.etiqueta-pagina {
+    color: #9b382e;
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+.indice-contenido h1,
+.configuracion-contenido h1 {
+    margin-top: 10px;
+    color: #6c1722;
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+}
+
+.flor-indice {
+    margin: 8px 0 18px;
+    color: #bd542c;
+    font-size: 38px;
+    text-shadow: 0 2px 2px rgba(100,30,20,.15);
+}
+
+.descripcion-configuracion {
+    max-width: 440px;
+    margin: 0 auto 25px;
+    color: #674638;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    line-height: 1.7;
+}
+
+.linea-indice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 17px 0;
+    text-align: left;
+    color: #57352b;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+}
+
+.numero-indice,
+.referencia-indice {
+    color: #982d2b;
+    font-weight: 700;
+}
+
+.puntos-indice {
+    flex: 1;
+    border-bottom: 2px dotted #a58a61;
+}
+
+.titulo-eleccion {
+    margin: 35px 0 18px;
+    color: #781c26;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.opciones-jugadores {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.opcion-cantidad {
+    width: 110px;
+    height: 110px;
+    position: relative;
+    border: 3px double #9e752e;
+    background:
+        radial-gradient(circle, rgba(255,255,255,.55), transparent 65%),
+        linear-gradient(145deg, #fff1cf, #dfc18a);
+    color: #741321;
+    box-shadow: 0 5px 0 #916b32, 0 9px 15px rgba(76,37,18,.2);
+    transition: .25s;
+}
+
+.opcion-cantidad::before {
+    content: "✿";
+    position: absolute;
+    top: 3px;
+    right: 7px;
+    color: rgba(164,42,50,.3);
+    font-size: 17px;
+}
+
+.opcion-cantidad:hover {
+    transform: translateY(-6px) scale(1.03);
+    background: #f4d99d;
+    box-shadow: 0 10px 0 #916b32, 0 14px 20px rgba(76,37,18,.25);
+}
+
+.opcion-cantidad span {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.opcion-cantidad small {
+    font-size: 11px;
+}
+
+.pie-indice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 40px;
+    color: #966b31;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.btn-volver {
+    margin-top: 25px;
+    padding: 10px 18px;
+    border: 1px solid #a47a3c;
+    color: #751b25;
+    background: rgba(255,255,255,.12);
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    transition: .2s;
+}
+
+.btn-volver:hover {
+    background: rgba(164,122,60,.2);
+    transform: translateY(-2px);
+}
+
+/* ==============================
+   CONFIGURACIÓN DE JUGADORES
+============================== */
+
+.configuracion-contenido {
+    text-align: center;
+}
+
+.configuracion-contenido .etiqueta-pagina {
+    margin-top: 28px;
+}
+
+.lista-jugadores {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.campo-jugador {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 15px;
+    border: 1px solid #b99862;
+    background: rgba(255,245,219,.65);
+    box-shadow: inset 0 0 12px rgba(116,75,32,.08);
+    transition: .2s;
+}
+
+.campo-jugador:focus-within {
+    border-color: #9c302b;
+    background: rgba(255,250,230,.9);
+    box-shadow: 0 0 0 3px rgba(156,48,43,.1);
+}
+
+.campo-jugador label {
+    color: #6d2024;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.campo-jugador input {
+    min-width: 0;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #a9874d;
+    outline: none;
+    color: #4b2018;
+    background: transparent;
+    font-size: 12px;
+}
+
+.campo-jugador input:focus {
+    border-bottom: 2px solid #8c1d2a;
+}
+
+.ficha {
+    flex-shrink: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 1px #75502a, 0 2px 3px rgba(0,0,0,.3);
+}
+
+.ficha-1 { background: #a52a32; }
+.ficha-2 { background: #277d62; }
+.ficha-3 { background: #315c9b; }
+.ficha-4 { background: #d39a32; }
+
+#error-configuracion {
+    min-height: 20px;
+    margin-top: 15px;
+    color: #a51e29;
+    font-size: 13px;
+}
+
+#btn-iniciar-partida {
+    padding: 15px 32px;
+    border: 2px solid #9d762e;
+    color: #f8e8c0;
+    background: linear-gradient(135deg, #8d1e2b, #4e0c17);
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    box-shadow:
+        0 5px 0 #49200f,
+        0 8px 15px rgba(0,0,0,.2),
+        0 0 25px rgba(255,195,100,.45),
+        0 0 45px rgba(255,130,45,.2);
+    transition: .2s;
+}
+
+#btn-iniciar-partida:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.2);
+}
+
+/* ==============================
+   PANTALLA DEL JUEGO
+============================== */
+
+.pantalla-juego {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: clamp(10px, 1.5vw, 20px);
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    /* Mármol natural beige: vetas y reflejos */
+
+    background-color: #cbbba3;
+    background-image:
+        radial-gradient(ellipse at 16% 18%, rgba(255,250,233,.75), transparent 38%),
+        radial-gradient(ellipse at 82% 78%, rgba(104,76,54,.22), transparent 42%),
+        radial-gradient(ellipse at 52% 48%, rgba(255,244,219,.40), transparent 65%),
+
+        /* Vetas finas e irregulares */
+        linear-gradient(117deg,
+            transparent 0%,
+            transparent 19%,
+            rgba(117,91,68,.13) 19.15%,
+            rgba(255,255,255,.20) 19.35%,
+            transparent 19.7%,
+            transparent 100%
+        ),
+        linear-gradient(154deg,
+            transparent 0%,
+            transparent 39%,
+            rgba(119,91,68,.13) 39.15%,
+            rgba(255,255,255,.18) 39.35%,
+            transparent 39.65%,
+            transparent 100%
+        ),
+        linear-gradient(72deg,
+            transparent 0%,
+            transparent 67%,
+            rgba(120,91,65,.12) 67.15%,
+            rgba(255,255,255,.15) 67.4%,
+            transparent 67.7%,
+            transparent 100%
+        ),
+
+        /* Manchas naturales de la piedra */
+        radial-gradient(ellipse at 28% 65%, rgba(142,111,82,.12), transparent 25%),
+        radial-gradient(ellipse at 72% 23%, rgba(255,255,255,.24), transparent 30%),
+        radial-gradient(ellipse at 90% 45%, rgba(130,99,70,.10), transparent 22%),
+        radial-gradient(ellipse at 8% 85%, rgba(255,255,255,.20), transparent 25%),
+
+        /* Color base del mármol */
+        linear-gradient(135deg,
+            #e5d9c5 0%,
+            #c9b99f 25%,
+            #e8ddca 48%,
+            #c5b399 72%,
+            #e0d2ba 100%
+        );
+
+    box-shadow:
+        inset 0 0 100px rgba(80,53,34,.22),
+        inset 0 0 180px rgba(255,245,222,.32);
+}
+
+/* Textura sutil de piedra */
+
+.pantalla-juego::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .32;
+    background:
+        radial-gradient(ellipse at 18% 32%, rgba(255,255,255,.35), transparent 28%),
+        radial-gradient(ellipse at 78% 72%, rgba(103,76,55,.12), transparent 30%),
+        radial-gradient(circle at 12% 17%, rgba(115,87,65,.13) 0 1px, transparent 2px),
+        radial-gradient(circle at 84% 36%, rgba(255,255,255,.38) 0 1px, transparent 2px),
+        radial-gradient(circle at 46% 86%, rgba(115,87,65,.10) 0 1px, transparent 2px);
+    background-size:
+        450px 350px,
+        520px 420px,
+        31px 37px,
+        43px 47px,
+        53px 59px;
+    filter: blur(.4px);
+}
+
+/* Vetas difuminadas y profundidad del mármol */
+
+.pantalla-juego::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: .25;
+    background:
+        linear-gradient(128deg,
+            transparent 0 13%,
+            rgba(112,85,63,.18) 13.1%,
+            rgba(255,255,255,.22) 13.3%,
+            transparent 13.65% 100%
+        ),
+        linear-gradient(148deg,
+            transparent 0 55%,
+            rgba(112,85,63,.13) 55.1%,
+            rgba(255,255,255,.18) 55.35%,
+            transparent 55.7% 100%
+        ),
+        radial-gradient(ellipse at 35% 15%, rgba(255,255,255,.24), transparent 45%),
+        radial-gradient(ellipse at 80% 90%, rgba(94,65,43,.12), transparent 40%);
+    filter: blur(2px);
+    mix-blend-mode: multiply;
+}
+
+/* Luz ambiental detrás del tablero */
+
+.zona-tablero {
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    isolation: isolate;
+}
+
+.zona-tablero::before {
+    content: "";
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    top: -7%;
+    left: -7%;
+    pointer-events: none;
+    z-index: -1;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(255,180,75,.42),
+            rgba(255,135,45,.20) 40%,
+            transparent 72%
+        );
+    filter: blur(25px);
+    animation: luzTablero 5s ease-in-out infinite alternate;
+}
+
+.encabezado {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto 15px;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 3px 5px rgba(70,35,20,.25));
+}
+
+.titulo-juego {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    margin-bottom: 15px;
+    padding: 12px;
+    text-align: center;
+    border-top: 2px solid rgba(116,27,37,.55);
+    border-bottom: 2px solid rgba(116,27,37,.55);
+    background:
+        linear-gradient(90deg, transparent, rgba(80,35,25,.16), transparent);
+}
+
+.titulo-juego p {
+    color: #80501f;
+    font-size: 10px;
+    letter-spacing: 4px;
+    font-weight: 700;
+}
+
+.titulo-juego h1 {
+    color: #6c1722;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(21px, 2.5vw, 34px);
+    text-shadow: 0 2px 3px rgba(255,255,255,.5);
+}
+
+.titulo-ornamento {
+    color: #b27a2d;
+    font-size: clamp(22px, 2.5vw, 34px);
+    text-shadow: 0 0 15px rgba(230,174,75,.3);
+}
+
+.barra-jugadores {
+    padding: 10px;
+    border: 3px double #9b702e;
+    background:
+        repeating-linear-gradient(45deg, transparent 0, transparent 8px, rgba(255,255,255,.025) 9px),
+        linear-gradient(135deg, #59101a, #360910);
+    box-shadow:
+        0 8px 20px rgba(50,25,15,.35),
+        0 0 15px rgba(255,180,75,.25),
+        inset 0 0 20px rgba(0,0,0,.3);
+    position: relative;
+}
+
+.barra-jugadores::before,
+.barra-jugadores::after {
+    content: "✿";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(232,185,99,.55);
+    font-size: 23px;
+}
+
+.barra-jugadores::before { left: 8px; }
+.barra-jugadores::after { right: 8px; }
+
+#jugadores {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.jugador {
+    min-width: 130px;
+    padding: 9px 12px;
+    border: 1px solid rgba(218,176,91,.6);
+    color: var(--crema);
+    background: linear-gradient(145deg, #84202a, #4b0c17);
+    box-shadow: inset 0 0 12px rgba(0,0,0,.3), 0 4px 10px rgba(0,0,0,.2);
+    border-radius: 3px;
+    transition: .25s;
+}
+
+.jugador.activo {
+    border: 2px solid var(--dorado-claro);
+    background: linear-gradient(145deg, #a32b31, #6d111d);
+    box-shadow:
+        0 0 12px rgba(255,210,120,.75),
+        0 0 28px rgba(255,170,65,.45),
+        0 0 45px rgba(255,110,35,.25),
+        inset 0 0 12px rgba(0,0,0,.3);
+    transform: translateY(-2px);
+}
+
+.jugador-cabecera {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.jugador-nombre {
+    font-weight: 700;
+}
+
+.jugador-turno {
+    color: var(--dorado-claro);
+    font-size: 10px;
+}
+
+.jugador-datos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 6px;
+    font-size: 11px;
+    color: #f1dfbd;
+}
+
+/* ==============================
+   DISTRIBUCIÓN DEL TABLERO
+============================== */
+
+.zona-juego {
+    width: 100%;
+    max-width: 1500px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(230px, 270px);
+    align-items: center;
+    gap: clamp(12px, 2vw, 25px);
+    position: relative;
+    z-index: 1;
+}
+
+.tablero-marco {
+    width: min(100%, 760px, calc(100svh - 260px));
+    aspect-ratio: 1 / 1;
+    padding: clamp(7px, 1.3vw, 16px);
+    position: relative;
+
+    /* Marco de madera tallada */
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 20px,
+            rgba(255,218,157,.08) 21px,
+            transparent 23px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            rgba(40,15,7,.12) 0,
+            rgba(40,15,7,.12) 2px,
+            transparent 2px,
+            transparent 35px
+        ),
+        linear-gradient(
+            135deg,
+            #e0ae65 0%,
+            #9b592f 12%,
+            #542714 25%,
+            #a76a3d 45%,
+            #4b2113 65%,
+            #bd8047 85%,
+            #542714 100%
+        );
+
+    border: 7px ridge #c18c43;
+
+    box-shadow:
+        0 25px 45px rgba(0,0,0,.65),
+        0 0 25px rgba(255,174,75,.65),
+        0 0 55px rgba(255,130,45,.35),
+        0 0 90px rgba(255,180,75,.18),
+        inset 0 0 0 3px #e0b765,
+        inset 0 0 25px #230c07;
+
+    animation: brilloTablero 5s ease-in-out infinite alternate;
+}
+
+/* Borde dorado interior */
+
+.tablero-marco::before {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    border: 2px solid rgba(246,211,137,.75);
+    pointer-events: none;
+    z-index: 2;
+    box-shadow: 0 0 15px rgba(255,196,93,.35);
+}
+
+/* Adorno lateral */
+
+.tablero-marco::after {
+    content: "✿";
+    position: absolute;
+    top: 50%;
+    left: -22px;
+    transform: translateY(-50%);
+    color: var(--dorado-claro);
+    font-size: 34px;
+    text-shadow: 0 3px 8px #200a07;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.tablero-decoracion {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 5px;
+    color: var(--dorado-claro);
+    font-size: 27px;
+    text-shadow: 0 3px 5px #200a07;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.tablero-decoracion span:nth-child(2),
+.tablero-decoracion span:nth-child(4) {
+    align-self: flex-end;
+}
+
+/* ==============================
+   TABLERO DE MADERA
+============================== */
+
+.tablero {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: repeat(12, minmax(0, 1fr));
+    position: relative;
+    overflow: hidden;
+    border: 6px solid #4b2113;
+
+    /* Superficie de madera envejecida */
+
+    background:
+        radial-gradient(
+            ellipse at 50% 50%,
+            rgba(255,220,157,.12),
+            transparent 65%
+        ),
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,218,157,.07) 0,
+            rgba(255,218,157,.07) 2px,
+            transparent 2px,
+            transparent 10px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 70px,
+            rgba(32,9,3,.15) 72px,
+            transparent 74px
+        ),
+        repeating-linear-gradient(
+            165deg,
+            transparent 0,
+            transparent 45px,
+            rgba(255,220,160,.045) 46px,
+            transparent 49px
+        ),
+        linear-gradient(135deg, #a36c40, #754025 45%, #492313);
+
+    box-shadow:
+        inset 0 0 35px rgba(32,9,3,.8),
+        inset 0 0 70px rgba(255,196,112,.08),
+        0 0 0 4px #d4a653;
+}
+
+/* Casilleros */
+
+.casilla {
+    min-width: 0;
+    min-height: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    overflow: hidden;
+    text-align: center;
+    color: #4b2117;
+    background:
+        radial-gradient(circle at 50% 40%, rgba(255,255,255,.45), transparent 75%),
+        linear-gradient(145deg, #fff2d6, #e5c58d);
+    border: 1px solid #9e702f;
+    box-shadow:
+        inset 0 0 0 2px rgba(255,255,255,.2),
+        inset 0 0 9px rgba(115,66,24,.2);
+    font-size: clamp(6px, .8vw, 10px);
+    transition: filter .2s, box-shadow .2s;
+}
+
+.casilla::before {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border: 1px solid rgba(164,115,44,.35);
+    pointer-events: none;
+}
+
+.casilla:hover {
+    filter: brightness(1.15);
+    z-index: 5;
+    box-shadow: inset 0 0 12px rgba(255,255,255,.5), 0 0 8px rgba(255,221,151,.7);
+}
+
+.numero-casilla {
+    color: #9b382e;
+    font-size: .85em;
+    font-weight: 700;
+}
+
+.casilla .nombre-casilla {
+    font-family: 'Cinzel', serif;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.casilla .precio-casilla {
+    margin-top: 3px;
+    font-size: .85em;
+}
+
+/* Fichas */
+
+.fichas-casilla {
+    width: 100%;
+    min-height: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    margin-top: 4px;
+    position: relative;
+    z-index: 5;
+}
+
+.ficha-tablero {
+    display: block;
+    width: 13px;
+    height: 13px;
+    min-width: 13px;
+    min-height: 13px;
+    border: 2px solid #fff2d5;
+    border-radius: 50%;
+    box-shadow:
+        0 2px 4px rgba(0,0,0,.65),
+        inset 0 0 3px rgba(255,255,255,.5);
+    flex-shrink: 0;
+}
+
+/* ==============================
+   CENTRO DEL TABLERO
+============================== */
+
+.centro-tablero {
+    grid-column: 2 / 12;
+    grid-row: 2 / 12;
+    min-width: 0;
+    min-height: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    overflow: hidden;
+    text-align: center;
+    color: var(--dorado-claro);
+    border: 6px double #d5a34d;
+
+    /* Centro inspirado en un azulejo antiguo */
+
+    background:
+        radial-gradient(circle at center, rgba(154,56,40,.85), transparent 75%),
+        radial-gradient(circle at 15% 15%, rgba(49,93,112,.20), transparent 35%),
+        radial-gradient(circle at 85% 85%, rgba(213,166,77,.15), transparent 35%),
+        repeating-linear-gradient(45deg, transparent 0, transparent 15px, rgba(255,255,255,.025) 16px),
+        linear-gradient(145deg, #681522, #300810);
+
+    box-shadow:
+        inset 0 0 45px rgba(0,0,0,.7),
+        inset 0 0 90px rgba(255,160,70,.08),
+        0 0 18px rgba(0,0,0,.45),
+        0 0 10px rgba(0,0,0,.35);
+}
+
+.centro-tablero::before {
+    content: "✿";
+    position: absolute;
+    top: 8px;
+    left: 13px;
+    color: rgba(229,166,76,.4);
+    font-size: clamp(18px, 3vw, 35px);
+    pointer-events: none;
+}
+
+.centro-tablero::after {
+    content: "✿";
+    position: absolute;
+    bottom: 8px;
+    right: 13px;
+    color: rgba(229,166,76,.4);
+    font-size: clamp(18px, 3vw, 35px);
+    pointer-events: none;
+}
+
+.centro-ornamento {
+    color: var(--dorado);
+    font-size: clamp(14px, 2vw, 25px);
+    letter-spacing: 8px;
+}
+
+.centro-etiqueta {
+    margin-top: 10px;
+    color: #e8c77f;
+    font-size: clamp(6px, .9vw, 10px);
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.centro-tablero h2 {
+    margin-top: 8px;
+    color: #fff0c7;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(17px, 2.5vw, 34px);
+    text-shadow: 0 3px 5px #21070b;
+}
+
+.centro-tablero p {
+    color: #e3cda2;
+    font-family: 'Playfair Display', serif;
+}
+
+.centro-descripcion {
+    margin-top: 5px;
+    font-style: italic;
+    font-size: clamp(8px, 1vw, 13px);
+}
+
+.centro-ilustracion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(7px, 1.5vw, 20px);
+    margin: 15px 0;
+    padding: 12px 20px;
+    border-top: 1px solid rgba(220,177,94,.45);
+    border-bottom: 1px solid rgba(220,177,94,.45);
+    font-size: clamp(19px, 3vw, 40px);
+    filter: drop-shadow(0 3px 3px rgba(0,0,0,.4));
+}
+
+.dados {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 8px;
+}
+
+.dado {
+    width: clamp(35px, 5vw, 58px);
+    height: clamp(35px, 5vw, 58px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #a87b38;
+    border-radius: 9px;
+    color: #781c25;
+    background: linear-gradient(145deg, #fff8e3, #d8b875);
+    font-family: 'Cinzel', serif;
+    font-size: 25px;
+    font-weight: 700;
+    box-shadow:
+        0 5px 0 #73451e,
+        0 8px 12px #1c0609,
+        0 0 20px rgba(255,190,90,.25),
+        inset 0 0 8px white;
+}
+
+#resultado-dados {
+    margin-top: 12px;
+    color: #f3dfb0;
+    font-size: clamp(8px, 1vw, 12px);
+}
+
+.centro-ornamento.inferior {
+    margin-top: 12px;
+}
+
+/* ==============================
+   PANEL LATERAL
+============================== */
+
+.panel-partida {
+    width: 100%;
+    max-width: 270px;
+    padding: clamp(14px, 1.5vw, 22px);
+    position: relative;
+    text-align: center;
+    color: var(--crema);
+    border: 5px double var(--dorado);
+    outline: 1px solid rgba(255,223,156,.3);
+    background:
+        radial-gradient(circle at 50% 20%, rgba(255,100,50,.38), transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(255,165,65,.18), transparent 55%),
+        repeating-linear-gradient(45deg, transparent 0, transparent 12px, rgba(255,255,255,.018) 13px),
+        linear-gradient(145deg, #721521, #3b0b13);
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.5),
+        0 0 18px rgba(255,174,75,.30),
+        0 0 38px rgba(255,130,45,.15),
+        inset 0 0 25px rgba(0,0,0,.4);
+}
+
+.panel-partida::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(219,176,87,.5);
+    pointer-events: none;
+}
+
+.panel-partida::after {
+    content: "❀";
+    position: absolute;
+    bottom: 5px;
+    right: 8px;
+    color: rgba(228,171,80,.17);
+    font-size: 65px;
+    pointer-events: none;
+}
+
+.panel-encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--dorado);
+}
+
+.panel-encabezado h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 2vw, 26px);
+    color: var(--dorado-claro);
+}
+
+.panel-ilustracion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: clamp(12px, 2vh, 25px) 0 15px;
+}
+
+.panel-plato {
+    width: clamp(65px, 8vw, 100px);
+    height: clamp(65px, 8vw, 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px double var(--dorado);
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, #f3dfb1, #bd824b 65%, #754322);
+    font-size: clamp(30px, 4vw, 48px);
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.5),
+        0 0 25px rgba(255,180,75,.4),
+        0 0 45px rgba(255,115,35,.2),
+        inset 0 0 10px rgba(255,255,255,.5);
+}
+
+.panel-flor {
+    color: #e5ad4b;
+    font-size: 30px;
+    text-shadow: 0 2px 5px #26070c;
+}
+
+.panel-subtitulo {
+    color: var(--dorado);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.panel-separador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 18px 0;
+    color: var(--dorado);
+}
+
+.panel-separador span:nth-child(2) {
+    width: 75px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--dorado), transparent);
+}
+
+.texto-controles {
+    color: #f0dcb4;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    line-height: 1.6;
+    font-size: clamp(12px, 1vw, 14px);
+}
+
+#btn-dados {
+    width: 100%;
+    margin-top: 16px;
+    padding: 13px 8px;
+    border: 2px solid #f2d38c;
+    color: #4b1119;
+    background: linear-gradient(135deg, #fff0bd, #d5a04c 65%, #a56c2b);
+    box-shadow:
+        0 6px 0 #75451e,
+        0 10px 18px rgba(0,0,0,.35),
+        0 0 18px rgba(255,195,100,.5),
+        0 0 35px rgba(255,130,45,.2);
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 14px;
+    transition: .2s;
+}
+
+#btn-dados:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.12);
+    box-shadow:
+        0 9px 0 #75451e,
+        0 13px 20px rgba(0,0,0,.4),
+        0 0 30px rgba(255,195,100,.65);
+}
+
+#btn-dados:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 #75451e;
+}
+
+#btn-dados:disabled {
+    cursor: not-allowed;
+    opacity: .65;
+    transform: none;
+}
+
+#btn-dados span {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+#mensaje {
+    min-height: 55px;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid rgba(215,172,85,.5);
+    color: #f2dfb7;
+    background: rgba(35,5,11,.4);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.panel-pie {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 17px;
+    color: var(--dorado);
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+/* ==============================
+   ANIMACIONES
+============================== */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px) rotate(-1deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(-1deg);
+    }
+}
+
+@keyframes brilloPortada {
+    0%, 100% {
+        box-shadow:
+            0 35px 80px rgba(0,0,0,.7),
+            0 0 0 2px #f4d58c,
+            0 0 25px rgba(255,190,90,.65),
+            0 0 65px rgba(255,132,54,.55),
+            0 0 120px rgba(255,105,35,.38);
+    }
+
+    50% {
+        box-shadow:
+            0 35px 80px rgba(0,0,0,.7),
+            0 0 0 2px #f4d58c,
+            0 0 35px rgba(255,210,110,.85),
+            0 0 85px rgba(255,132,54,.7),
+            0 0 150px rgba(255,85,25,.45);
+    }
+}
+
+@keyframes brilloTablero {
+    from {
+        box-shadow:
+            0 25px 45px rgba(0,0,0,.65),
+            0 0 18px rgba(255,174,75,.55),
+            0 0 45px rgba(255,130,45,.35),
+            0 0 85px rgba(255,90,30,.2),
+            inset 0 0 0 3px #e0b765,
+            inset 0 0 25px #230c07;
+    }
+
+    to {
+        box-shadow:
+            0 25px 45px rgba(0,0,0,.65),
+            0 0 30px rgba(255,200,100,.8),
+            0 0 65px rgba(255,130,45,.55),
+            0 0 110px rgba(255,90,30,.3),
+            inset 0 0 0 3px #e0b765,
+            inset 0 0 25px #230c07;
+    }
+}
+
+@keyframes luzTablero {
+    from {
+        opacity: .55;
+        transform: scale(.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.dado.rodando {
+    animation: girarDado .2s linear infinite;
+}
+
+@keyframes girarDado {
+    from { transform: rotate(0deg) scale(1); }
+    to { transform: rotate(180deg) scale(1.05); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+/* ==============================
+   RESPONSIVE GENERAL
+============================== */
+
+@media (max-width: 1050px) {
+    .zona-juego {
+        grid-template-columns: minmax(0, 1fr) 225px;
+        gap: 12px;
+    }
+
+    .tablero-marco {
+        width: min(100%, 650px, calc(100svh - 270px));
+        padding: 10px;
+    }
+
+    .panel-partida {
+        padding: 14px 10px;
+    }
+
+    .jugador {
+        min-width: 115px;
+    }
+}
+
+/* Ventanas con poca altura */
+
+@media (max-height: 800px) and (min-width: 751px) {
+    .pantalla-juego {
+        padding-top: 8px;
+        padding-bottom: 12px;
+    }
+
+    .encabezado {
+        margin-bottom: 10px;
+    }
+
+    .titulo-juego {
+        margin-bottom: 10px;
+        padding: 7px;
+    }
+
+    .titulo-juego h1 {
+        font-size: clamp(20px, 2.2vw, 29px);
+    }
+
+    .barra-jugadores {
+        padding: 7px;
+    }
+
+    .jugador {
+        padding: 7px 10px;
+    }
+
+    .jugador-datos {
+        margin-top: 4px;
+    }
+
+    .tablero-marco {
+        width: min(100%, calc(100svh - 245px));
+        padding: 9px;
+    }
+
+    .panel-partida {
+        padding: 12px;
+    }
+
+    .panel-ilustracion {
+        margin: 10px 0;
+    }
+
+    .panel-plato {
+        width: 65px;
+        height: 65px;
+        font-size: 32px;
+    }
+
+    .panel-separador {
+        margin: 12px 0;
+    }
+
+    #btn-dados {
+        margin-top: 12px;
+        padding: 11px 8px;
+    }
+
+    #mensaje {
+        min-height: 45px;
+        margin-top: 12px;
+        padding: 9px;
+    }
+
+    .panel-pie {
+        margin-top: 13px;
+    }
+}
+
+/* Tablets y pantallas angostas */
+
+@media (max-width: 750px) {
+    .pantalla-juego {
+        padding: 12px;
+    }
+
+    .zona-juego {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .tablero-marco {
+        width: min(100%, 650px);
+        padding: 10px;
+    }
+
+    .panel-partida {
+        width: 100%;
+        max-width: 650px;
+        margin: 0 auto;
+    }
+
+    .panel-ilustracion {
+        margin: 14px 0;
+    }
+
+    .panel-plato {
+        width: 75px;
+        height: 75px;
+        font-size: 37px;
+    }
+
+    #mensaje {
+        min-height: 40px;
+    }
+}
+
+/* Celulares */
+
+@media (max-width: 500px) {
+    .marco-portada {
+        min-height: auto;
+        padding: 35px 20px;
+    }
+
+    .portada {
+        padding: 8px;
+    }
+
+    .flor {
+        font-size: 48px;
+    }
+
+    .medallon {
+        width: 115px;
+        height: 115px;
+    }
+
+    .medallon-centro {
+        font-size: 45px;
+    }
+
+    .pagina-libro,
+    .configuracion-contenido {
+        padding: 25px 18px;
+    }
+
+    .indice-contenido h1,
+    .configuracion-contenido h1 {
+        font-size: 34px;
+    }
+
+    .opcion-cantidad {
+        width: 85px;
+        height: 90px;
+    }
+
+    .lista-jugadores {
+        grid-template-columns: 1fr;
+    }
+
+    .titulo-juego {
+        gap: 8px;
+    }
+
+    .titulo-ornamento {
+        font-size: 23px;
+    }
+
+    .titulo-juego p {
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
+
+    .titulo-juego h1 {
+        font-size: 22px;
+    }
+
+    .tablero-marco {
+        width: 100%;
+        padding: 6px;
+        border-width: 4px;
+    }
+
+    .tablero {
+        border-width: 3px;
+    }
+
+    .centro-tablero {
+        padding: 5px;
+        border-width: 2px;
+    }
+
+    .centro-ilustracion {
+        margin: 6px 0;
+        padding: 5px;
+    }
+
+    .papel-picado {
+        height: 40px;
+    }
+
+    .papel-picado span {
+        width: 40px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .jugador {
+        min-width: 105px;
+        padding: 8px;
+    }
+}
+
+
+/* ==============================
+   REPRODUCTOR DE SPOTIFY
+============================== */
+
+.panel-musica {
+    position: relative;
+    z-index: 1;
+    margin-top: 20px;
+    padding: 13px 10px;
+    border: 1px solid rgba(213, 166, 77, .75);
+    border-radius: 5px;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(255, 190, 90, .13), transparent 75%),
+        rgba(35, 5, 11, .55);
+    box-shadow:
+        inset 0 0 15px rgba(0, 0, 0, .25),
+        0 4px 12px rgba(0, 0, 0, .2);
+}
+
+.panel-musica h3 {
+    margin-bottom: 6px;
+    color: var(--dorado-claro);
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.panel-musica p {
+    margin-bottom: 12px;
+    color: #e8cda0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: .4px;
+}
+
+.panel-musica iframe {
+    display: block;
+    width: 100%;
+    height: 152px;
+    border: 0;
+    border-radius: 8px;
+    background: #121212;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .35);
+}
+
+/* Ajustes para pantallas pequeñas */
+
+@media (max-width: 750px) {
+    .panel-musica {
+        max-width: 100%;
+        margin-top: 18px;
+        padding: 15px;
+    }
+
+    .panel-musica iframe {
+        height: 152px;
+    }
+}
+
+/* Ajustes para ventanas de poca altura */
+
+@media (max-height: 800px) and (min-width: 751px) {
+    .panel-musica {
+        margin-top: 12px;
+        padding: 10px;
+    }
+
+    .panel-musica h3 {
+        font-size: 15px;
+    }
+
+    .panel-musica p {
+        margin-bottom: 8px;
+    }
+
+    .panel-musica iframe {
+        height: 152px;
+    }
+}
+
+
+/* ==================================================
+   NUEVA DISTRIBUCIÓN DE MÚSICA
+   Stevie: pantallas iniciales
+   Estrellita: partida
+================================================== */
+
+/* Reproductor en portada, selección y configuración */
+
+#ubicacion-musica-inicial {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: min(290px, calc(100vw - 30px));
+    z-index: 20;
+}
+
+#ubicacion-musica-inicial .panel-musica {
+    margin: 0;
+    padding: 14px;
+    border: 2px solid var(--dorado);
+    background:
+        radial-gradient(circle at 50% 0%, rgba(255, 190, 90, .18), transparent 75%),
+        linear-gradient(145deg, #721521, #3b0b13);
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, .55),
+        0 0 18px rgba(255, 174, 75, .3),
+        inset 0 0 15px rgba(0, 0, 0, .25);
+}
+
+#ubicacion-musica-inicial .panel-musica h3 {
+    font-size: 17px;
+    text-align: center;
+}
+
+#ubicacion-musica-inicial .panel-musica p {
+    text-align: center;
+    line-height: 1.5;
+}
+
+#ubicacion-musica-inicial .panel-musica iframe {
+    height: 152px;
+}
+
+
+/* Reproductor durante la partida: columna izquierda */
+
+.zona-juego {
+    grid-template-columns:
+        minmax(190px, 240px)
+        minmax(0, 1fr)
+        minmax(230px, 270px);
+    align-items: center;
+    gap: clamp(12px, 1.5vw, 22px);
+}
+
+#ubicacion-musica-juego {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#ubicacion-musica-juego .panel-musica {
+    width: 100%;
+    margin: 0;
+    padding: 18px 13px;
+    border: 3px double var(--dorado);
+    border-radius: 5px;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(255, 190, 90, .2), transparent 75%),
+        repeating-linear-gradient(
+            45deg,
+            transparent 0,
+            transparent 12px,
+            rgba(255, 255, 255, .018) 13px
+        ),
+        linear-gradient(145deg, #721521, #3b0b13);
+    box-shadow:
+        0 18px 35px rgba(0, 0, 0, .5),
+        0 0 18px rgba(255, 174, 75, .3),
+        0 0 38px rgba(255, 130, 45, .15),
+        inset 0 0 25px rgba(0, 0, 0, .4);
+}
+
+#ubicacion-musica-juego .panel-musica h3 {
+    margin-bottom: 12px;
+    color: var(--dorado-claro);
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    text-align: center;
+}
+
+#ubicacion-musica-juego .panel-musica p {
+    margin-bottom: 15px;
+    color: #f0dcb4;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+#ubicacion-musica-juego .panel-musica iframe {
+    height: 352px;
+    min-height: 300px;
+}
+
+
+/* Ajustes para que el tablero se adapte a las tres columnas */
+
+.zona-tablero {
+    width: 100%;
+    min-width: 0;
+}
+
+.tablero-marco {
+    width: min(100%, 760px, calc(100svh - 260px));
+}
+
+.panel-partida {
+    width: 100%;
+    max-width: 270px;
+}
+
+
+/* Pantallas medianas */
+
+@media (max-width: 1100px) and (min-width: 751px) {
+    .zona-juego {
+        grid-template-columns:
+            minmax(170px, 200px)
+            minmax(0, 1fr)
+            minmax(205px, 225px);
+        gap: 10px;
+    }
+
+    #ubicacion-musica-juego .panel-musica {
+        padding: 12px 9px;
+    }
+
+    #ubicacion-musica-juego .panel-musica h3 {
+        font-size: 18px;
+    }
+
+    #ubicacion-musica-juego .panel-musica p {
+        font-size: 11px;
+    }
+
+    #ubicacion-musica-juego .panel-musica iframe {
+        height: 300px;
+    }
+
+    .tablero-marco {
+        width: min(100%, calc(100svh - 270px));
+    }
+
+    .panel-partida {
+        padding: 12px 9px;
+    }
+}
+
+
+/* Ventanas con poca altura */
+
+@media (max-height: 800px) and (min-width: 751px) {
+    #ubicacion-musica-juego .panel-musica {
+        padding: 10px 8px;
+    }
+
+    #ubicacion-musica-juego .panel-musica h3 {
+        font-size: 17px;
+    }
+
+    #ubicacion-musica-juego .panel-musica p {
+        margin-bottom: 9px;
+    }
+
+    #ubicacion-musica-juego .panel-musica iframe {
+        height: 250px;
+        min-height: 220px;
+    }
+
+    .zona-juego {
+        align-items: center;
+    }
+}
+
+
+/* Tablets y celulares: reproductor arriba del tablero */
+
+@media (max-width: 750px) {
+    .zona-juego {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    #ubicacion-musica-juego {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    #ubicacion-musica-juego .panel-musica {
+        max-width: 650px;
+        margin: 0 auto;
+        padding: 15px;
+    }
+
+    #ubicacion-musica-juego .panel-musica h3 {
+        font-size: 20px;
+    }
+
+    #ubicacion-musica-juego .panel-musica iframe {
+        height: 152px;
+        min-height: 152px;
+    }
+
+    .zona-tablero {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .panel-partida {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    #ubicacion-musica-inicial {
+        right: 10px;
+        bottom: 10px;
+        width: min(270px, calc(100vw - 20px));
+    }
+
+    #ubicacion-musica-inicial .panel-musica {
+        padding: 10px;
+    }
+
+    #ubicacion-musica-inicial .panel-musica h3 {
+        font-size: 15px;
+    }
+
+    #ubicacion-musica-inicial .panel-musica p {
+        margin-bottom: 8px;
+        font-size: 10px;
+    }
+
+    #ubicacion-musica-inicial .panel-musica iframe {
+        height: 152px;
+    }
+}
+
+
+/* Celulares pequeños */
+
+@media (max-width: 500px) {
+    #ubicacion-musica-inicial {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: calc(100% - 30px);
+        margin: 15px auto;
+    }
+
+    #ubicacion-musica-inicial .panel-musica {
+        width: 100%;
+    }
+}
+
+
+/* IDENTIFICACIÓN VISUAL DE LOS TIPOS DE CASILLEROS */
+
+.casilla.tipo-receta {
+    border-top: 4px solid #a94438;
+}
+
+.casilla.tipo-ingredientes {
+    background:
+        radial-gradient(circle at 50% 40%, rgba(255,255,255,.5), transparent 75%),
+        linear-gradient(145deg, #e8efcf, #bdc98c);
+}
+
+.casilla.tipo-comunidad {
+    border-top: 4px solid #315d70;
+}
+
+.casilla.tipo-fortuna {
+    border-top: 4px solid #a17a35;
+}
+
+.casilla.tipo-impuesto {
+    background:
+        radial-gradient(circle at 50% 40%, rgba(255,255,255,.4), transparent 75%),
+        linear-gradient(145deg, #f1d1b8, #d99a78);
+}
+
+.casilla.tipo-transporte,
+.casilla.tipo-servicio {
+    border-top: 4px solid #477a55;
+}
+
+.casilla.tipo-carcel,
+.casilla.tipo-ir-carcel {
+    background:
+        radial-gradient(circle at 50% 40%, rgba(255,255,255,.4), transparent 75%),
+        linear-gradient(145deg, #d8d4c8, #a9a397);
+}
+
+.casilla.tipo-especial {
+    background:
+        radial-gradient(circle at 50% 40%, rgba(255,255,255,.45), transparent 75%),
+        linear-gradient(145deg, #f4df9e, #d5a64d);
+}
+
+.casilla.tipo-pendiente {
+    border: 1px dashed #9e702f;
+    background: linear-gradient(145deg, #e6d9bd, #cbb994);
+    color: #725d43;
+}
+
+.casilla.tipo-pendiente .nombre-casilla {
+    font-size: .8em;
+    font-style: italic;
+}

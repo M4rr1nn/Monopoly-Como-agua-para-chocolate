@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#64151c">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Como Agua para Chocolate | Juego de mesa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- UBICACIÓN DEL REPRODUCTOR EN LAS PANTALLAS INICIALES -->
+    <div id="ubicacion-musica-inicial"></div>
+
+    <!-- PORTADA -->
+    <section id="pantalla-inicio" class="pantalla-inicio">
+        <div class="papel-picado" aria-hidden="true">
+            <span>✿</span><span>❀</span><span>✿</span>
+            <span>❀</span><span>✿</span><span>❀</span>
+            <span>✿</span>
+        </div>
+
+        <div class="portada">
+            <div class="marco-portada">
+
+                <div class="esquina esquina-superior-izquierda">✿</div>
+                <div class="esquina esquina-superior-derecha">✿</div>
+                <div class="esquina esquina-inferior-izquierda">✿</div>
+                <div class="esquina esquina-inferior-derecha">✿</div>
+
+                <div class="ornamento-superior">❧ ✿ ❧</div>
+
+                <p class="subtitulo">UN RECETARIO DE AMOR, PASIÓN Y TRADICIÓN</p>
+
+                <div class="ilustracion-portada">
+                    <div class="flor flor-izquierda">✿</div>
+
+                    <div class="medallon">
+                        <span class="medallon-superior">✦</span>
+                        <span class="medallon-centro">🫕</span>
+                        <span class="medallon-inferior">✦</span>
+                    </div>
+
+                    <div class="flor flor-derecha">✿</div>
+                </div>
+
+                <h1 class="titulo-portada">
+                    Como agua
+                    <span>para chocolate</span>
+                </h1>
+
+                <div class="separador-portada">
+                    <span>❧</span>
+                    <span class="separador-linea"></span>
+                    <span>❧</span>
+                </div>
+
+                <p class="texto-portada">
+                    Cada receta guarda un recuerdo.
+                    Cada ingrediente, una emoción.
+                </p>
+
+                <p class="autora-portada">
+                    UN JUEGO INSPIRADO EN LA NOVELA DE LAURA ESQUIVEL
+                </p>
+
+                <button id="btn-comenzar" class="boton-abrir">
+                    <span>Abrir el recetario</span>
+                    <span class="flecha-abrir">❧</span>
+                </button>
+
+                <a href="assets/documentos/Reglamento Monopoly.pdf"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn-reglas">
+                    <span>✧</span> Reglas del juego <span>✧</span>
+                </a>
+
+                <div class="ornamento-inferior">❧ ❀ ❧</div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SELECCIÓN DE JUGADORES -->
+    <section id="pantalla-cantidad" class="pantalla-cantidad oculta">
+        <div class="pagina-libro">
+
+            <div class="pagina-encabezado">
+                <span>RECETARIO DE LA FAMILIA</span>
+                <span>EDICIÓN ESPECIAL</span>
+            </div>
+
+            <div class="numero-pagina">01</div>
+
+            <div class="indice-contenido">
+                <p class="etiqueta-pagina">ANTES DE ENCENDER EL FOGÓN</p>
+
+                <h1>La mesa está servida</h1>
+
+                <div class="flor-indice">✿</div>
+
+                <p class="descripcion-configuracion">
+                    Toda receta necesita buenos ingredientes.
+                    Esta aventura también necesita protagonistas.
+                    ¿Cuántos se sentarán a la mesa?
+                </p>
+
+                <div class="linea-indice">
+                    <span class="numero-indice">01.</span>
+                    <span class="nombre-indice">Una mesa para dos</span>
+                    <span class="puntos-indice"></span>
+                    <span class="referencia-indice">02</span>
+                </div>
+
+                <div class="linea-indice">
+                    <span class="numero-indice">02.</span>
+                    <span class="nombre-indice">Una historia entre tres</span>
+                    <span class="puntos-indice"></span>
+                    <span class="referencia-indice">03</span>
+                </div>
+
+                <div class="linea-indice">
+                    <span class="numero-indice">03.</span>
+                    <span class="nombre-indice">Una mesa para cuatro</span>
+                    <span class="puntos-indice"></span>
+                    <span class="referencia-indice">04</span>
+                </div>
+
+                <p class="titulo-eleccion">Elegí la cantidad de jugadores</p>
+
+                <div class="opciones-jugadores">
+                    <button class="opcion-cantidad" data-cantidad="2">
+                        <span>02</span>
+                        <small>Jugadores</small>
+                    </button>
+
+                    <button class="opcion-cantidad" data-cantidad="3">
+                        <span>03</span>
+                        <small>Jugadores</small>
+                    </button>
+
+                    <button class="opcion-cantidad" data-cantidad="4">
+                        <span>04</span>
+                        <small>Jugadores</small>
+                    </button>
+                </div>
+
+                <div class="pie-indice">
+                    <span>❧</span>
+                    <span>QUE COMIENCE LA HISTORIA</span>
+                    <span>❧</span>
+                </div>
+
+                <button id="btn-volver-inicio" class="btn-volver">
+                    ← Volver a la tapa
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CONFIGURACIÓN -->
+    <section id="pantalla-configuracion" class="pantalla-configuracion oculta">
+        <div class="configuracion-contenido">
+
+            <div class="pagina-encabezado">
+                <span>RECETARIO DE LA FAMILIA</span>
+                <span>PREPARACIÓN</span>
+            </div>
+
+            <p class="etiqueta-pagina">LOS PROTAGONISTAS</p>
+
+            <h1>Preparar la mesa</h1>
+
+            <p class="descripcion-configuracion">
+                Escriban sus nombres antes de comenzar.
+                ¡Hay lugar para cuatro personas!
+            </p>
+
+            <div class="flor-indice">✿</div>
+
+            <div class="lista-jugadores">
+
+                <div class="campo-jugador">
+                    <span class="ficha ficha-1"></span>
+                    <label for="nombre1">Jugador 1</label>
+                    <input type="text" id="nombre1"
+                           placeholder="Ingresá tu nombre" maxlength="15">
+                </div>
+
+                <div class="campo-jugador">
+                    <span class="ficha ficha-2"></span>
+                    <label for="nombre2">Jugador 2</label>
+                    <input type="text" id="nombre2"
+                           placeholder="Ingresá tu nombre" maxlength="15">
+                </div>
+
+                <div class="campo-jugador">
+                    <span class="ficha ficha-3"></span>
+                    <label for="nombre3">Jugador 3</label>
+                    <input type="text" id="nombre3"
+                           placeholder="Ingresá tu nombre" maxlength="15">
+                </div>
+
+                <div class="campo-jugador">
+                    <span class="ficha ficha-4"></span>
+                    <label for="nombre4">Jugador 4</label>
+                    <input type="text" id="nombre4"
+                           placeholder="Ingresá tu nombre" maxlength="15">
+                </div>
+
+            </div>
+
+            <p id="error-configuracion"></p>
+
+            <button id="btn-iniciar-partida">
+                Comenzar la historia
+            </button>
+
+            <button id="btn-volver-cantidad" class="btn-volver">
+                ← Volver al índice
+            </button>
+        </div>
+    </section>
+
+
+    <!-- JUEGO -->
+    <div id="pantalla-juego" class="pantalla-juego oculta">
+
+        <header class="encabezado">
+
+            <div class="titulo-juego">
+                <span class="titulo-ornamento">✿</span>
+                <div>
+                    <p>EL JUEGO DE LA FAMILIA</p>
+                    <h1>Como agua para chocolate</h1>
+                </div>
+                <span class="titulo-ornamento">✿</span>
+            </div>
+
+            <div class="barra-jugadores">
+                <div id="jugadores"></div>
+            </div>
+
+        </header>
+
+
+        <main class="zona-juego">
+
+            <!-- UBICACIÓN DEL REPRODUCTOR DURANTE LA PARTIDA -->
+            <div id="ubicacion-musica-juego"></div>
+
+            <div class="zona-tablero">
+
+                <div class="tablero-marco">
+
+                    <div class="tablero-decoracion" aria-hidden="true">
+                        <span>✿</span>
+                        <span>❀</span>
+                        <span>✿</span>
+                        <span>❀</span>
+                    </div>
+
+                    <div id="tablero" class="tablero">
+
+                        <div class="centro-tablero">
+
+                            <div class="centro-ornamento">❧ ✿ ❧</div>
+
+                            <p class="centro-etiqueta">
+                                COCINA TRADICIONAL MEXICANA
+                            </p>
+
+                            <h2>La cocina de Tita</h2>
+
+                            <p class="centro-descripcion">
+                                Donde cada receta guarda una historia
+                            </p>
+
+                            <div class="centro-ilustracion">
+                                <span>🌶️</span>
+                                <span>🍫</span>
+                                <span>🌹</span>
+                                <span>🫕</span>
+                                <span>🌽</span>
+                            </div>
+
+                            <div class="dados">
+                                <div id="dado1" class="dado">?</div>
+                                <div id="dado2" class="dado">?</div>
+                            </div>
+
+                            <p id="resultado-dados">
+                                Esperando lanzamiento...
+                            </p>
+
+                            <div class="centro-ornamento inferior">
+                                ❧ ✿ ❧
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PANEL DE JUEGO -->
+            <aside class="panel-partida">
+
+                <div class="panel-encabezado">
+                    <span>✦</span>
+                    <h2>La partida</h2>
+                    <span>✦</span>
+                </div>
+
+                <div class="panel-ilustracion">
+                    <div class="panel-flor">✿</div>
+                    <div class="panel-plato">🫕</div>
+                    <div class="panel-flor">✿</div>
+                </div>
+
+                <p class="panel-subtitulo">
+                    UNA HISTORIA ENTRE FOGONES
+                </p>
+
+                <div class="panel-separador">
+                    <span>❧</span>
+                    <span></span>
+                    <span>❧</span>
+                </div>
+
+                <div class="controles">
+                    <p class="texto-controles">
+                        Es el momento de avanzar.
+                        ¡Que la suerte acompañe tu camino!
+                    </p>
+
+                    <button id="btn-dados">
+                        <span>🎲</span>
+                        Tirar los dados
+                    </button>
+
+                    <p id="mensaje">
+                        Esperando el comienzo de la partida...
+                    </p>
+                </div>
+
+                <div class="panel-pie">
+                    <span>✿</span>
+                    <p>EL SABOR DE CADA DECISIÓN</p>
+                    <span>✿</span>
+                </div>
+
+            </aside>
+
+        </main>
+    </div>
+
+
+    <!-- REPRODUCTOR ÚNICO DE YOUTUBE -->
+    <section id="panel-musica" class="panel-musica">
+        <h3 id="titulo-musica">🎼 Música de la historia</h3>
+
+        <p id="nombre-cancion">
+            Estrellita — Manuel Ponce
+        </p>
+
+        <iframe
+            id="reproductor-musica"
+            src="https://www.youtube.com/embed/aC00oVFxYAg?autoplay=1&rel=0"
+            width="100%"
+            height="152"
+            frameborder="0"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+            loading="eager">
+        </iframe>
+    </section>
+
+
+    <script src="data.js"></script>
+    <script src="ui.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>
