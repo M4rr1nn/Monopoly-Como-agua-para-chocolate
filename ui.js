@@ -14,19 +14,44 @@ let posicionesJugadores = [];
 // ==========================================
 
 function obtenerPosicion(indice) {
-    if (indice <= 11) {
-        return { fila: 11, columna: 11 - indice };
+
+    // Casillero 40: Diciembre
+    if (indice === 39) {
+        return {
+            fila: 1,
+            columna: 11
+        };
     }
 
-    if (indice <= 22) {
-        return { fila: 22 - indice, columna: 0 };
+    // Lado superior: de izquierda a derecha
+    if (indice <= 9) {
+        return {
+            fila: 1,
+            columna: indice + 1
+        };
     }
 
-    if (indice <= 33) {
-        return { fila: 0, columna: indice - 22 };
+    // Lado derecho: de arriba hacia abajo
+    if (indice <= 19) {
+        return {
+            fila: indice - 8,
+            columna: 11
+        };
     }
 
-    return { fila: indice - 33, columna: 11 };
+    // Lado inferior: de derecha a izquierda
+    if (indice <= 29) {
+        return {
+            fila: 11,
+            columna: 30 - indice
+        };
+    }
+
+    // Lado izquierdo: de abajo hacia arriba
+    return {
+        fila: 40 - indice,
+        columna: 1
+    };
 }
 
 
@@ -72,8 +97,8 @@ function dibujarTablero() {
 
         const posicion = obtenerPosicion(indice);
 
-        casilla.style.gridRow = posicion.fila + 1;
-        casilla.style.gridColumn = posicion.columna + 1;
+        casilla.style.gridRow = posicion.fila;
+        casilla.style.gridColumn = posicion.columna;
 
         tablero.appendChild(casilla);
     });

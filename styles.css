@@ -1142,8 +1142,8 @@ button {
     height: 100%;
     aspect-ratio: 1 / 1;
     display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-template-rows: repeat(12, minmax(0, 1fr));
+    grid-template-columns: repeat(11, minmax(0, 1fr));
+    grid-template-rows: repeat(11, minmax(0, 1fr));
     position: relative;
     overflow: hidden;
     border: 6px solid #4b2113;
@@ -1276,8 +1276,8 @@ button {
 ============================== */
 
 .centro-tablero {
-    grid-column: 2 / 12;
-    grid-row: 2 / 12;
+    grid-column: 2 / 11;
+    grid-row: 2 / 11;
     min-width: 0;
     min-height: 0;
     position: relative;
