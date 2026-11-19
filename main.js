@@ -63,6 +63,8 @@ let resultadosTirada = {};
 let ordenTurnos = [];
 let indiceTurno = 0;
 let lanzandoDados = false;
+let doblesConsecutivos = 0;
+let ultimoLanzamientoDoble = false;
 
 
 // ==========================================
@@ -450,6 +452,8 @@ if (botonIniciarPartida) {
 
         ordenTurnos = [];
         indiceTurno = 0;
+        doblesConsecutivos = 0;
+        ultimoLanzamientoDoble = false;
 
         prepararTablero();
 
@@ -543,6 +547,7 @@ async function obtenerResultadoDados() {
     const valor1 = tirarDado();
     const valor2 = tirarDado();
     const suma = valor1 + valor2;
+    ultimoLanzamientoDoble = valor1 === valor2;
 
     dado1.classList.remove("rodando");
     dado2.classList.remove("rodando");
@@ -740,15 +745,20 @@ async function realizarTurno(suma) {
 
     if (!jugador) return;
 
-    if (jugador.enManicomio) {
-        const quedoLibre = await resolverTurnoManicomio(jugador);
+    if (ultimoLanzamientoDoble) {
+        doblesConsecutivos++;
 
-        if (partidaFinalizada) return;
+        if (doblesConsecutivos >= 3) {
+            doblesConsecutivos = 0;
+            await enviarAlManicomio(jugador, true);
 
-        if (!quedoLibre) {
+            if (partidaFinalizada) return;
+
             pasarAlSiguienteJugador();
             return;
         }
+    } else {
+        doblesConsecutivos = 0;
     }
 
     if (mensaje) {
@@ -767,12 +777,37 @@ async function realizarTurno(suma) {
 
     actualizarTodo();
 
+    if (jugador.enManicomio) {
+        doblesConsecutivos = 0;
+        pasarAlSiguienteJugador();
+        return;
+    }
+
+    if (ultimoLanzamientoDoble) {
+        if (mensaje) {
+            mensaje.textContent =
+                "¡Sacaste doble! " + jugador.nombre +
+                " vuelve a tirar los dados.";
+        }
+
+        const resultado = document.getElementById("resultado-dados");
+
+        if (resultado) {
+            resultado.textContent =
+                "¡Doble! Volvés a tirar. Dobles seguidos: " +
+                doblesConsecutivos + " de 3.";
+        }
+
+        return;
+    }
+
     pasarAlSiguienteJugador();
 }
 
 function pasarAlSiguienteJugador() {
     if (partidaFinalizada || !ordenTurnos.length) return;
 
+    doblesConsecutivos = 0;
     indiceTurno = (indiceTurno + 1) % ordenTurnos.length;
     jugadorActivo = ordenTurnos[indiceTurno];
 
@@ -1310,7 +1345,7 @@ async function efectoCumpleanos(jugador) {
 // MANICOMIO
 // ==========================================
 
-async function enviarAlManicomio(jugador) {
+async function enviarAlManicomio(jugador, porDobles = false) {
     jugador.enManicomio = true;
     jugador.turnosManicomio = 0;
 
@@ -1319,9 +1354,11 @@ async function enviarAlManicomio(jugador) {
     actualizarTodo();
 
     await mostrarAviso(
-        "¡Al manicomio!",
-        jugador.nombre + " debe ir directamente al manicomio.",
-        "Perdés tu turno actual y deberás cumplir dos turnos detenidos."
+        porDobles ? "¡Te descubrieron haciendo trampa!" : "¡Al manicomio!",
+        porDobles
+            ? jugador.nombre + " sacó tres dobles consecutivos y fue enviado al manicomio."
+            : jugador.nombre + " debe ir directamente al manicomio.",
+        "No avanzás en la tercera tirada y debés cumplir dos turnos detenidos."
     );
 }
 
