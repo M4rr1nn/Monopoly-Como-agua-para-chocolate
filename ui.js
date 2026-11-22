@@ -15,16 +15,8 @@ let posicionesJugadores = [];
 
 function obtenerPosicion(indice) {
 
-    // Casillero 40: Diciembre
-    if (indice === 39) {
-        return {
-            fila: 1,
-            columna: 11
-        };
-    }
-
     // Lado superior: de izquierda a derecha
-    if (indice <= 9) {
+    if (indice <= 10) {
         return {
             fila: 1,
             columna: indice + 1
@@ -32,24 +24,24 @@ function obtenerPosicion(indice) {
     }
 
     // Lado derecho: de arriba hacia abajo
-    if (indice <= 19) {
+    if (indice <= 20) {
         return {
-            fila: indice - 8,
+            fila: indice - 9,
             columna: 11
         };
     }
 
     // Lado inferior: de derecha a izquierda
-    if (indice <= 29) {
+    if (indice <= 30) {
         return {
             fila: 11,
-            columna: 30 - indice
+            columna: 31 - indice
         };
     }
 
     // Lado izquierdo: de abajo hacia arriba
     return {
-        fila: 40 - indice,
+        fila: 41 - indice,
         columna: 1
     };
 }

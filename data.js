@@ -1,3 +1,4 @@
+
 // ==========================================
 // CASILLEROS DEL TABLERO (40 CASILLEROS)
 // ==========================================
@@ -12,11 +13,11 @@ const casilleros = [
     { nombre: "Gana ingredientes", tipo: "ingredientes" },
     { nombre: "Efluvios y pasiones", tipo: "fortuna" },
     { nombre: "Gana ingredientes", tipo: "ingredientes" },
+    { nombre: "Marzo - Codornices en pétalos de rosas", tipo: "receta", grupo: "recetas", precio: 5, alquiler: 1, ingredientesRequeridos: ["ajo", "anis"] },
 
-    // ESQUINA SUPERIOR DERECHA
+    // ESQUINA SUPERIOR DERECHA: 11
     { nombre: "De visita / Manicomio", tipo: "carcel" },
 
-    { nombre: "Marzo - Codornices en pétalos de rosas", tipo: "receta", grupo: "recetas", precio: 5, alquiler: 1, ingredientesRequeridos: ["ajo", "anis"] },
     {
         nombre: "Abril - Mole de guajolote con almendra y ajonjolí",
         tipo: "receta",
@@ -32,11 +33,11 @@ const casilleros = [
     { nombre: "Gana ingredientes", tipo: "ingredientes" },
     { nombre: "La cocina del rancho", tipo: "comunidad" },
     { nombre: "Junio - Masa para hacer fósforos", tipo: "receta", grupo: "recetas", precio: 7, alquiler: 2, ingredientesRequeridos: [], comprable: false },
+    { nombre: "Gana ingredientes", tipo: "ingredientes" },
 
-    // ESQUINA INFERIOR DERECHA
+    // ESQUINA INFERIOR DERECHA: 21
     { nombre: "Parada libre", tipo: "especial" },
 
-    { nombre: "Gana ingredientes", tipo: "ingredientes" },
     { nombre: "Julio - Caldo de colita de res", tipo: "receta", grupo: "recetas", precio: 8, alquiler: 2, ingredientesRequeridos: ["cebolla", "ajo", "jitomate"] },
     { nombre: "Efluvios y pasiones", tipo: "fortuna" },
     { nombre: "Gana ingredientes", tipo: "ingredientes" },
@@ -45,11 +46,11 @@ const casilleros = [
     { nombre: "Septiembre - Chocolate y Rosca de Reyes", tipo: "receta", grupo: "recetas", precio: 9, alquiler: 3, ingredientesRequeridos: ["azucar"] },
     { nombre: "Octubre - Torrejas de natas", tipo: "receta", grupo: "recetas", precio: 10, alquiler: 3, ingredientesRequeridos: ["canela", "huevos"] },
     { nombre: "Gana ingredientes", tipo: "ingredientes" },
+    { nombre: "La cocina del rancho", tipo: "comunidad" },
 
-    // ESQUINA INFERIOR IZQUIERDA
+    // ESQUINA INFERIOR IZQUIERDA: 31
     { nombre: "Andá a la cárcel", tipo: "ir-carcel" },
 
-    { nombre: "La cocina del rancho", tipo: "comunidad" },
     { nombre: "Compañía de energía - Fábrica de fósforos", tipo: "servicio", precio: 6, alquiler: 2 },
     {
         nombre: "Agosto - Champandongo",
